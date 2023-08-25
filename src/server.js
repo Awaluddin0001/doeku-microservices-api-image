@@ -1,8 +1,6 @@
 import multer from "multer";
 import express from "express";
 import cors from "cors";
-import fs from "fs";
-import bodyParser from "body-parser";
 
 const app = express();
 const PORT = 60001;
@@ -15,8 +13,9 @@ const nomorizinusaha = multer.diskStorage({
     cb(null, "public/images/nomorizinusaha"); // Set your desired folder path here
   },
   filename: (req, file, cb) => {
-    const ext = file.originalname.split(".").pop(); //nama untuk filenya
-    cb(null, Date.now() + "." + ext);
+    // const ext = file.originalname.split(".").pop(); //nama untuk filenya
+    // cb(null, Date.now() + "." + ext);
+    cb(null, file.originalname);
   },
 });
 const tokoluar = multer.diskStorage({
@@ -24,8 +23,7 @@ const tokoluar = multer.diskStorage({
     cb(null, "public/images/tokotampakluar"); // Set your desired folder path here
   },
   filename: (req, file, cb) => {
-    const ext = file.originalname.split(".").pop(); //nama untuk filenya
-    cb(null, Date.now() + "." + ext);
+    cb(null, file.originalname);
   },
 });
 const tokodalam = multer.diskStorage({
@@ -33,8 +31,7 @@ const tokodalam = multer.diskStorage({
     cb(null, "public/images/tokotampakdalam"); // Set your desired folder path here
   },
   filename: (req, file, cb) => {
-    const ext = file.originalname.split(".").pop(); //nama untuk filenya
-    cb(null, Date.now() + "." + ext);
+    cb(null, file.originalname);
   },
 });
 const signborrower = multer.diskStorage({
@@ -42,8 +39,7 @@ const signborrower = multer.diskStorage({
     cb(null, "public/sign/borrower"); // Set your desired folder path here
   },
   filename: (req, file, cb) => {
-    const ext = file.originalname.split(".").pop(); //nama untuk filenya
-    cb(null, Date.now() + "." + ext);
+    cb(null, file.originalname);
   },
 });
 const uploadNomorizinusaha = multer({ storage: nomorizinusaha });
